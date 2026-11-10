@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a0b10">
+<title>Kay G Creation — Admin Dashboard</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+:root{--bg:#090a0f;--panel:#141720;--panel2:#1a1e29;--line:#ffffff18;--gold:#d8b66e;--gold2:#f0d99f;--text:#f4f1e9;--muted:#9da1ad;--red:#e07878;--green:#86c69a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#a17a351c,transparent 34%),var(--bg);color:var(--text);font:14px 'DM Sans',sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}.shell{max-width:1200px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0 24px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.13em;font-size:12px}.logo{width:40px;height:40px;border:1px solid #d8b66e99;border-radius:13px;display:grid;place-items:center;color:var(--gold2);font:23px Georgia}.sub{display:block;color:var(--muted);font-size:9px;font-weight:400;letter-spacing:.2em;margin-top:4px}.status{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#8b8f99}.dot.on{background:var(--green);box-shadow:0 0 10px #86c69a88}.layout{display:grid;grid-template-columns:230px 1fr;gap:22px;padding-top:24px}.side,.panel{background:linear-gradient(145deg,#171a23,#11131a);border:1px solid var(--line);border-radius:19px}.side{padding:15px;height:max-content;position:sticky;top:16px}.side button{display:block;width:100%;text-align:left;padding:13px;border:0;border-radius:11px;background:transparent;color:#c7c8cf;margin:3px 0}.side button.active,.side button:hover{background:#d8b66e15;color:var(--gold2)}.side small{display:block;color:#777c89;padding:15px 12px 5px;letter-spacing:.15em;font-size:9px}.main{min-width:0}.welcome{margin-bottom:20px}.eyebrow{color:var(--gold2);font-size:10px;letter-spacing:.2em;text-transform:uppercase}.welcome h1{font:500 35px Georgia;margin:9px 0}.welcome p{color:var(--muted);margin:0;line-height:1.6}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-bottom:20px}.stat{padding:18px;background:#141720;border:1px solid var(--line);border-radius:15px}.stat b{display:block;font:27px Georgia;color:var(--gold2)}.stat span{font-size:11px;color:var(--muted)}.panel{padding:22px;margin-bottom:17px}.panel h2{font:500 24px Georgia;margin:0 0 7px}.hint{font-size:12px;color:var(--muted);line-height:1.6;margin:0 0 18px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:11px;color:#c8c9cf}input,textarea,select{width:100%;border:1px solid var(--line);border-radius:11px;background:#0c0e14;color:#f5f3ee;padding:12px;outline:none}input:focus,textarea:focus,select:focus{border-color:#d8b66e88}textarea{min-height:120px;resize:vertical;line-height:1.6}.btn{border:1px solid var(--line);background:#ffffff0a;color:#eee;padding:11px 15px;border-radius:11px;font-weight:600}.btn.gold{background:linear-gradient(130deg,#f0d392,#b98b43);border:0;color:#17130b}.btn.danger{color:#ffaaaa;border-color:#e0787844}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:13px}.list{display:grid;gap:9px}.item{display:flex;align-items:center;gap:13px;padding:12px;border:1px solid var(--line);border-radius:13px;background:#ffffff04}.thumb{width:58px;height:58px;border-radius:10px;object-fit:cover;background:#242833;flex-shrink:0}.itemInfo{flex:1;min-width:0}.itemInfo b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13px}.itemInfo small{color:var(--muted);font-size:10px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #ffffff25;border-radius:14px}.hidden{display:none!important}.notice{padding:12px 14px;border-radius:11px;background:#d8b66e12;border:1px solid #d8b66e33;color:#e9d8ae;font-size:12px;line-height:1.6;margin:12px 0}.notice.error{background:#e0787812;border-color:#e0787844;color:#ffb4b4}.login{max-width:650px;margin:50px auto}.login .panel{padding:28px}.login h1{font:500 34px Georgia;margin:10px 0}.tiny{font-size:10px;color:var(--muted);line-height:1.6}.pill{font-size:10px;color:var(--gold2);border:1px solid #d8b66e44;border-radius:30px;padding:5px 8px}.fileline{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.fileline input{flex:1}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 15px}.tabs button{border:1px solid var(--line);background:#ffffff08;color:#bbb;padding:8px 12px;border-radius:30px;font-size:11px}.tabs button.active{border-color:#d8b66e;color:var(--gold2)}.footnote{font-size:10px;color:#777c89;text-align:center;margin:24px 0}
+@media(max-width:760px){.shell{padding:14px}.layout{grid-template-columns:1fr}.side{position:static;display:flex;overflow:auto;gap:4px}.side small{display:none}.side button{white-space:nowrap;width:auto}.stats{gap:8px}.stat{padding:13px}.stat b{font-size:22px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.welcome h1{font-size:29px}.item{align-items:flex-start}.top{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="top">
+  <a class="brand" href="#"><span class="logo">K</span><span>KAY G CREATION<span class="sub">ADMIN STUDIO</span></span></a>
+  <div class="status"><span class="dot" id="statusDot"></span><span id="statusText">Not connected</span><button class="btn hidden" id="logoutBtn">Sign out</button></div>
+</header>
+
+<section class="login" id="loginView">
+  <div class="panel">
+    <div class="eyebrow">Private creator workspace</div>
+    <h1>Welcome to your studio.</h1>
+    <p class="hint">Connect your Firebase web app, then sign in with the Google account authorised as the site administrator.</p>
+    <div class="notice">Your Firebase Web App config is required. It is safe to use the normal Firebase web configuration here; never paste a service-account private key or any secret credential.</div>
+    <div class="formgrid">
+      <div class="field"><label>API Key</label><input id="apiKey" placeholder="AIza..."></div>
+      <div class="field"><label>Auth Domain</label><input id="authDomain" placeholder="your-project.firebaseapp.com"></div>
+      <div class="field"><label>Project ID</label><input id="projectId" placeholder="your-firebase-project"></div>
+      <div class="field"><label>Storage Bucket (not used on Free plan)</label><input id="storageBucket" placeholder="Optional on Spark plan"></div>
+      <div class="field full"><label>App ID</label><input id="appId" placeholder="1:123456789:web:abcdef"></div>
+    </div>
+    <div class="actions"><button class="btn" id="saveConfig">Save configuration</button><button class="btn gold" id="connectBtn">Connect & sign in with Google</button></div>
+    <div id="loginMessage" class="notice hidden"></div>
+    <p class="tiny">Before sign-in, enable Google provider in Firebase Authentication and add the website domain to Authentication → Settings → Authorized domains. The dashboard is configured for kailash283@gmail.com. Add your final HTTPS hosting domain to Firebase Authentication → Settings → Authorized domains before signing in.</p>
+  </div>
+</section>
+
+<div class="layout hidden" id="appView">
+  <aside class="side">
+    <small>WORKSPACE</small>
+    <button class="active" data-view="overview">◈ Overview</button>
+    <button data-view="posts">▧ Artwork posts</button>
+    <button data-view="articles">▤ Articles</button>
+    <small>ACCOUNT</small>
+    <button data-view="settings">⚙ Setup & rules</button>
+  </aside>
+  <main class="main">
+    <section class="view" id="view-overview">
+      <div class="welcome"><div class="eyebrow">Your creative workspace</div><h1>Good to see you.</h1><p>Manage the artwork and stories published on Kay G Creation.</p></div>
+      <div class="stats"><div class="stat"><b id="postCount">—</b><span>Artwork posts</span></div><div class="stat"><b id="articleCount">—</b><span>Articles</span></div><div class="stat"><b id="publishedCount">—</b><span>Published items</span></div></div>
+      <div class="panel"><h2>Quick start</h2><p class="hint">Add an artwork post or write a new article. Text and image links are stored in Cloud Firestore. Images are hosted on Blogger or another HTTPS image host to avoid Firebase Storage billing.</p><div class="actions"><button class="btn gold" data-go="posts">＋ Create artwork post</button><button class="btn" data-go="articles">＋ Write article</button></div></div>
+      <div class="panel"><h2>Important</h2><p class="hint">Only kailash283@gmail.com can sign in as the dashboard admin. Firestore rules enforce write access. Keep public reads limited to published content.</p></div>
+    </section>
+
+    <section class="view hidden" id="view-posts">
+      <div class="welcome"><div class="eyebrow">Gallery management</div><h1>Artwork posts</h1><p>Upload original artwork and publish it to your public gallery.</p></div>
+      <div class="panel">
+        <h2 id="postFormTitle">Create artwork post</h2><p class="hint">Add a clear title, category and a public HTTPS image URL. Host the image on Blogger first, then paste its image address here.</p>
+        <form id="postForm"><input type="hidden" id="postId">
+          <div class="formgrid">
+            <div class="field"><label>Post title *</label><input id="postTitle" required maxlength="120" placeholder="e.g. Midnight Luxe Wallpaper"></div>
+            <div class="field"><label>Category *</label><select id="postCategory" required><option value="romantic">Romantic Art</option><option value="fashion">Fashion</option><option value="wallpaper">Wallpapers</option><option value="3d">3D & Illustration</option><option value="print">Print Art</option><option value="other">Other</option></select></div>
+            <div class="field full"><label>Description</label><textarea id="postDescription" maxlength="1200" placeholder="Describe this artwork..."></textarea></div>
+            <div class="field full"><label>Artwork image URL *</label><input id="postImageUrl" type="url" required placeholder="https://blogger.googleusercontent.com/img/..." autocomplete="url"><div class="tiny">Upload the image to your Blogger post first, copy its direct image address, and paste it here.</div><div id="postImagePreview"></div></div>
+            <div class="field"><label>Image alt text</label><input id="postAlt" maxlength="180" placeholder="Describe the image for accessibility"></div>
+            <div class="field"><label>Pinterest Pin URL (optional)</label><input id="postPinterest" type="url" placeholder="https://www.pinterest.com/pin/..."></div>
+            <div class="field full"><label><input id="postPublished" type="checkbox" checked style="width:auto;margin-right:8px">Publish immediately</label></div>
+          </div>
+          <div class="actions"><button class="btn gold" type="submit" id="savePostBtn">Save artwork</button><button class="btn" type="button" id="resetPost">Clear form</button></div>
+        </form>
+      </div>
+      <div class="panel"><div class="toolbar"><h2>All artwork</h2><button class="btn" id="refreshPosts">Refresh</button></div><div class="list" id="postsList"><div class="empty">Connect Firebase to load posts.</div></div></div>
+    </section>
+
+    <section class="view hidden" id="view-articles">
+      <div class="welcome"><div class="eyebrow">Editorial management</div><h1>Articles</h1><p>Write SEO-friendly articles and publish each one as a searchable page.</p></div>
+      <div class="panel">
+        <h2 id="articleFormTitle">Write an article</h2><p class="hint">Add a useful article with a unique slug, meta description and full content. Use headings in the article body as needed.</p>
+        <form id="articleForm"><input type="hidden" id="articleId">
+          <div class="formgrid">
+            <div class="field full"><label>Article title *</label><input id="articleTitle" required maxlength="160" placeholder="How to create premium digital art"></div>
+            <div class="field"><label>Category *</label><select id="articleCategory"><option>Digital Art</option><option>Romantic Art</option><option>Indian Fashion</option><option>3D Illustration</option><option>Pinterest SEO</option><option>Wallpapers</option><option>Printable Art</option><option>Graphic Design</option><option>UI UX</option><option>Creative Workflow</option></select></div>
+            <div class="field"><label>Focus keyword</label><input id="articleKeyword" maxlength="100" placeholder="digital art tips"></div>
+            <div class="field full"><label>URL slug *</label><input id="articleSlug" required maxlength="180" placeholder="how-to-create-premium-digital-art"></div>
+            <div class="field full"><label>Meta description *</label><textarea id="articleMeta" required maxlength="160" placeholder="Write a concise, accurate search description (about 150 characters)."></textarea></div>
+            <div class="field full"><label>Article cover image URL (optional)</label><input id="articleImageUrl" type="url" placeholder="https://blogger.googleusercontent.com/img/..."><div class="tiny">Optional public HTTPS image link from Blogger or another image host.</div><div id="articleImagePreview"></div></div>
+            <div class="field full"><label>Article content *</label><textarea id="articleBody" required style="min-height:300px" placeholder="Write your complete article here. Separate sections with headings."></textarea></div>
+            <div class="field full"><label><input id="articlePublished" type="checkbox" checked style="width:auto;margin-right:8px">Publish immediately</label></div>
+          </div>
+          <div class="actions"><button class="btn gold" type="submit" id="saveArticleBtn">Save article</button><button class="btn" type="button" id="resetArticle">Clear form</button></div>
+        </form>
+      </div>
+      <div class="panel"><div class="toolbar"><h2>All articles</h2><button class="btn" id="refreshArticles">Refresh</button></div><div class="list" id="articlesList"><div class="empty">Connect Firebase to load articles.</div></div></div>
+    </section>
+
+    <section class="view hidden" id="view-settings">
+      <div class="welcome"><div class="eyebrow">Configuration</div><h1>Setup & security</h1><p>Publishing is restricted to your admin Google account. Images use external HTTPS hosting to keep the project on the Spark plan.</p></div>
+      <div class="panel"><h2>Connected Firebase project</h2><p class="hint" id="projectInfo">Not connected</p><button class="btn" id="editConfig">Edit Firebase configuration</button></div>
+      <div class="panel"><h2>Firestore security rules</h2><p class="hint">These rules are configured for kailash283@gmail.com. Visitors can read published content; only this Google account can create, edit or delete posts and articles.</p><textarea readonly id="firestoreRules" style="min-height:300px"></textarea><button class="btn" id="copyFirestore">Copy Firestore rules</button></div>
+      <div class="panel"><h2>Image hosting on the Free plan</h2><p class="hint">This dashboard does not use Firebase Storage. Upload images to your Blogger media library or another trusted HTTPS image host, then paste the direct image URL into the artwork or article form. Only public image URLs should be used.</p></div>
+      <div class="notice">Never publish with test mode or allow read, write: if true. Use your own verified admin email in both rule sets.</div>
+    </section>
+  </main>
+</div>
+<p class="footnote">KAY G CREATION · PRIVATE ADMIN STUDIO · Firebase connection required for live publishing</p>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const $ = id => document.getElementById(id);
+const defaultRules = `rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == "kailash283@gmail.com";
+    }
+    match /posts/{postId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+    match /articles/{articleId} {
+      allow read: if resource.data.published == true || isAdmin();
+      allow create, update, delete: if isAdmin();
+    }
+  }
+}`;
+$("firestoreRules").value = defaultRules;
+
+let app, auth, db, currentUser;
+let postsCache=[], articlesCache=[];
+function message(target,text,error=false){const el=$(target);el.textContent=text;el.classList.remove("hidden","error");if(error)el.classList.add("error")}
+function setConnected(on){$("statusDot").classList.toggle("on",on);$("statusText").textContent=on?(currentUser?.email||"Connected"):"Not connected";$("logoutBtn").classList.toggle("hidden",!on)}
+function configFromForm(){return {apiKey:$("apiKey").value.trim(),authDomain:$("authDomain").value.trim(),projectId:$("projectId").value.trim(),storageBucket:$("storageBucket").value.trim(),appId:$("appId").value.trim()}}
+function loadConfig(){try{const c=JSON.parse(localStorage.getItem("kgcFirebaseConfig")||"{}");for(const k of Object.keys(c))if($(k))$(k).value=c[k]}catch{}}
+function saveConfig(){const c=configFromForm();if(!c.apiKey||!c.authDomain||!c.projectId||!c.appId){message("loginMessage","Please fill in API Key, Auth Domain, Project ID and App ID. Storage Bucket is optional on the Free plan.",true);return false}localStorage.setItem("kgcFirebaseConfig",JSON.stringify(c));return true}
+async function connect(){if(!saveConfig())return;try{const c=configFromForm();app=initializeApp(c);auth=getAuth(app);db=getFirestore(app);const provider=new GoogleAuthProvider();const result=await signInWithPopup(auth,provider);if((result.user.email||"").toLowerCase()!=="kailash283@gmail.com"){await signOut(auth);throw new Error("This Google account is not the authorised Kay G Creation admin account.")}onAuthStateChanged(auth,async user=>{currentUser=user;setConnected(!!user);if(user){$("loginView").classList.add("hidden");$("appView").classList.remove("hidden");$("projectInfo").textContent=`Project: ${c.projectId} · Signed in as ${user.email}`;await refreshAll()}})}catch(e){message("loginMessage",friendlyError(e),true)}}
+function friendlyError(e){const code=e?.code||"";if(code.includes("auth/unauthorized-domain"))return "This domain is not authorised. Add your hosting domain in Firebase Authentication → Settings → Authorized domains.";if(code.includes("auth/operation-not-allowed"))return "Enable Google sign-in in Firebase Authentication → Sign-in method.";if(code.includes("popup"))return "Google sign-in popup was blocked or closed. Allow popups and try again.";return `${e?.message||"Connection failed"} Check your Firebase configuration and security rules.`}
+$("saveConfig").onclick=()=>{if(saveConfig())message("loginMessage","Firebase configuration saved in this browser. Now connect and sign in.")};
+$("connectBtn").onclick=connect;
+$("logoutBtn").onclick=async()=>{if(auth)await signOut(auth);location.reload()};
+$("editConfig").onclick=()=>{$("appView").classList.add("hidden");$("loginView").classList.remove("hidden")};
+document.querySelectorAll(".side button[data-view]").forEach(b=>b.onclick=()=>showView(b.dataset.view));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>showView(b.dataset.go));
+function showView(name){document.querySelectorAll(".side button[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));document.querySelectorAll(".view").forEach(v=>v.classList.add("hidden"));$("view-"+name).classList.remove("hidden")}
+function validateImageUrl(value,required=false){const url=(value||"").trim();if(!url){if(required)throw new Error("Please paste a public HTTPS image URL.");return ""}let parsed;try{parsed=new URL(url)}catch{throw new Error("Please enter a valid image URL.")}if(parsed.protocol!=="https:")throw new Error("Image URL must start with https://");return url}
+function previewImage(inputId,previewId){const url=$(inputId).value.trim();const box=$(previewId);box.innerHTML="";if(!url)return;const img=document.createElement("img");img.src=url;img.alt="Image preview";img.style.cssText="display:block;max-width:180px;max-height:180px;object-fit:contain;border-radius:12px;margin-top:10px;border:1px solid #ffffff22";img.onerror=()=>{box.textContent="Preview unavailable. Check that this is a direct public image URL."};box.appendChild(img)}
+async function refreshAll(){await Promise.all([refreshPosts(),refreshArticles()])}
+async function refreshPosts(){try{const snap=await getDocs(collection(db,"posts"));postsCache=snap.docs.map(d=>({id:d.id,...d.data()}));renderList("postsList",postsCache,"post");$("postCount").textContent=postsCache.length;$("publishedCount").textContent=postsCache.filter(x=>x.published).length+articlesCache.filter(x=>x.published).length}catch(e){$("postsList").innerHTML=`<div class="empty">${e.message}</div>`}}
+async function refreshArticles(){try{const snap=await getDocs(collection(db,"articles"));articlesCache=snap.docs.map(d=>({id:d.id,...d.data()}));renderList("articlesList",articlesCache,"article");$("articleCount").textContent=articlesCache.length;$("publishedCount").textContent=postsCache.filter(x=>x.published).length+articlesCache.filter(x=>x.published).length}catch(e){$("articlesList").innerHTML=`<div class="empty">${e.message}</div>`}}
+function renderList(target,items,type){const el=$(target);el.innerHTML="";if(!items.length){el.innerHTML='<div class="empty">Nothing here yet. Create your first item above.</div>';return}items.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0)).forEach(item=>{const row=document.createElement("div");row.className="item";if(item.imageUrl){const img=document.createElement("img");img.className="thumb";img.src=item.imageUrl;img.alt="";row.appendChild(img)}else{const blank=document.createElement("div");blank.className="thumb";row.appendChild(blank)}const info=document.createElement("div");info.className="itemInfo";const title=document.createElement("b");title.textContent=item.title||"Untitled";const small=document.createElement("small");small.textContent=`${item.category||"Article"} · ${item.published?"Published":"Draft"}`;info.append(title,small);row.appendChild(info);const edit=document.createElement("button");edit.className="btn";edit.textContent="Edit";edit.onclick=()=>type==="post"?editPost(item):editArticle(item);const del=document.createElement("button");del.className="btn danger";del.textContent="Delete";del.onclick=()=>removeItem(type,item);row.append(edit,del);el.appendChild(row)})}
+$("postForm").onsubmit=async e=>{e.preventDefault();const btn=$("savePostBtn");btn.disabled=true;btn.textContent="Saving…";try{const id=$("postId").value;const imageUrl=validateImageUrl($("postImageUrl").value,true);const data={title:$("postTitle").value.trim(),category:$("postCategory").value,description:$("postDescription").value.trim(),imageUrl,imagePath:"",altText:$("postAlt").value.trim(),pinterestUrl:$("postPinterest").value.trim(),published:$("postPublished").checked,updatedAt:serverTimestamp()};if(id)await updateDoc(doc(db,"posts",id),data);else await addDoc(collection(db,"posts"),{...data,createdAt:serverTimestamp()});resetPost();await refreshPosts();alert("Artwork saved successfully.")}catch(e){alert(e.message)}finally{btn.disabled=false;btn.textContent="Save artwork"}};
+function editPost(x){$("postId").value=x.id;$("postImageUrl").value=x.imageUrl||"";previewImage("postImageUrl","postImagePreview");$("postTitle").value=x.title||"";$("postCategory").value=x.category||"other";$("postDescription").value=x.description||"";$("postAlt").value=x.altText||"";$("postPinterest").value=x.pinterestUrl||"";$("postPublished").checked=!!x.published;$("postFormTitle").textContent="Edit artwork post";$("postForm").scrollIntoView({behavior:"smooth"})}
+function resetPost(){$("postForm").reset();$("postId").value="";$("postFormTitle").textContent="Create artwork post";$("postImageUrl").value="";$("postImagePreview").innerHTML=""}
+$("resetPost").onclick=resetPost;$("postImageUrl").oninput=()=>previewImage("postImageUrl","postImagePreview");
+$("articleTitle").oninput=()=>{if(!$("articleId").value)$("articleSlug").value=$("articleTitle").value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")};
+$("articleForm").onsubmit=async e=>{e.preventDefault();const btn=$("saveArticleBtn");btn.disabled=true;btn.textContent="Saving…";try{const id=$("articleId").value;const imageUrl=validateImageUrl($("articleImageUrl").value,false);const data={title:$("articleTitle").value.trim(),category:$("articleCategory").value,keyword:$("articleKeyword").value.trim(),slug:$("articleSlug").value.trim(),metaDescription:$("articleMeta").value.trim(),body:$("articleBody").value.trim(),imageUrl,imagePath:"",published:$("articlePublished").checked,updatedAt:serverTimestamp()};if(id)await updateDoc(doc(db,"articles",id),data);else await addDoc(collection(db,"articles"),{...data,createdAt:serverTimestamp()});resetArticle();await refreshArticles();alert("Article saved successfully.")}catch(e){alert(e.message)}finally{btn.disabled=false;btn.textContent="Save article"}};
+function editArticle(x){$("articleId").value=x.id;$("articleImageUrl").value=x.imageUrl||"";previewImage("articleImageUrl","articleImagePreview");$("articleTitle").value=x.title||"";$("articleCategory").value=x.category||"Digital Art";$("articleKeyword").value=x.keyword||"";$("articleSlug").value=x.slug||"";$("articleMeta").value=x.metaDescription||"";$("articleBody").value=x.body||"";$("articlePublished").checked=!!x.published;$("articleFormTitle").textContent="Edit article";$("articleForm").scrollIntoView({behavior:"smooth"})}
+function resetArticle(){$("articleForm").reset();$("articleId").value="";$("articleFormTitle").textContent="Write an article";$("articleImageUrl").value="";$("articleImagePreview").innerHTML=""}
+$("resetArticle").onclick=resetArticle;$("articleImageUrl").oninput=()=>previewImage("articleImageUrl","articleImagePreview");
+async function removeItem(type,x){if(!confirm(`Delete "${x.title}" permanently?`))return;try{await deleteDoc(doc(db,type==="post"?"posts":"articles",x.id));type==="post"?await refreshPosts():await refreshArticles()}catch(e){alert(e.message)}}
+$("refreshPosts").onclick=refreshPosts;$("refreshArticles").onclick=refreshArticles;
+$("copyFirestore").onclick=()=>navigator.clipboard.writeText(defaultRules).then(()=>alert("Firestore rules copied. They are already set for kailash283@gmail.com."));
+loadConfig();
+</script>
+</body></html>
